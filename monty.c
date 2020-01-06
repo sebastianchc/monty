@@ -45,9 +45,25 @@ void get_code(unsigned int line)
 			if (!strcmp(token, inst[i].opcode))
 			{
 				inst[i].f(&new, line);
+				return;
 			}
 			token = strtok(NULL, " \n");
 		}
 		i++;
 	}
+	if (inst[i].opcode == NULL)
+	{
+		dprintf(2, "L%i: unknown instruction <opcode>\n", line);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void _push(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	printf("%s\n", buffer);
+}
+
+void _pall(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	printf("%s\n", buffer);
 }
